@@ -71,7 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
               loadingColor: Colors.yellow,
               borderRadius: 12,
               border: Border.all(width: 4, color: Colors.orange),
-              durationAsSecond: 4,
 
               child: Text(
                 'Checkout',
