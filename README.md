@@ -5,7 +5,7 @@
 The `long_press_animation_button` package for Flutter is designed that implement **loading buttons** activated by long-press gestures with **animation**.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mithun1st/long-press-animation-button/master/example/screenshots/animation.gif" width="700" alt="example">
+  <img src="https://raw.githubusercontent.com/mithun1st/long-press-animation-button/master/example/screenshots/animation.gif" width="200" alt="example">
 </p>
 
 
