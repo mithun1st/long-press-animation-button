@@ -1,39 +1,99 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Long Press Animation Button
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+[![pub package](https://img.shields.io/pub/v/long_press_animation_button.svg)](https://pub.dev/packages/long_press_animation_button)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+The `long_press_animation_button` package for Flutter is designed that implement **loading buttons** activated by long-press gestures with **animation**.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mithun1st/long-press-animation-button/master/example/screenshots/animation.gif" width="700" alt="example">
+</p>
 
-## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+> Add the package to your `pubspec.yaml` file:
+```yaml
+dependencies:
+  long_press_animation_button: <latest version>
+```
+
+> Import the Package:
+```dart
+import 'package:long_press_animation_button/long_press_animation_button.dart';
+```
+
+> Implement Widget:
+```dart
+LongPressAnimationButton(
+    onLongPress: () => print('Click !'),
+    child: Text("Long Press Animation Button"),
+),
+```
+
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+> Create a String variable:
 ```dart
-const like = 'sample';
+String _text = 'ready for checkout';
 ```
+> View Data of String Variable:
+```dart
+Text(
+    _text,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+    ),
+),
+```
+
+> Implement Long Press Animation Button:
+```dart
+LongPressAnimationButton(
+  onTap:
+      () => setState(() {
+        _text = 'Long Press To Checkout.\n-- onTap() --';
+      }),
+  onLongPressCancel:
+      () => setState(() {
+        _text = 'Checkout Cancel !\n-- onLongPressCancel() --';
+      }),
+  onLongPress:
+      () => setState(() {
+        _text = 'CHECKOUT SUCCESS :)\n-- onLongPress() --';
+      }),
+
+  height: 80,
+  width: 200,
+  backgroundColor: Colors.tealAccent,
+  loadingColor: Colors.yellow,
+  borderRadius: 12,
+  border: Border.all(width: 4, color: Colors.orange),
+  durationAsSecond: 4,
+
+  child: Text(
+    'Checkout',
+    style: TextStyle(
+      fontSize: 26,
+      fontWeight: FontWeight.bold,
+      color: Colors.brown,
+    ),
+  ),
+),
+```
+
+
+## Limitation
+
+| Android | iOS | MacOS | Web | Linux | Windows |
+| :-----: | :-: | :---: | :-: | :---: | :----: |
+|   ✅    | ✅  |  ✅   |   ✅   |  ✅   |   ✅   |
+
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+`long_press_animation_button` plugin is developed by [Mahadi Hassan](https://www.linkedin.com/in/mithun1st/)
+> mithun.2121@yahoo.com | [LinkedIn](https://www.linkedin.com/in/mithun1st/) | [GitHub](https://www.github.com/mithun1st/) | [Website](https://mithun1st.blogspot.com/)

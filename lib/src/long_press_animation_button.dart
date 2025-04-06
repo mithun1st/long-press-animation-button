@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class LongPressAnimationButton extends StatefulWidget {
-  final String text;
-  final TextStyle? textStyle;
+  final Widget child;
 
   final void Function() onLongPress;
+  final void Function()? onLongPressCancel;
   final void Function()? onTap;
 
   final Color backgroundColor;
@@ -18,10 +18,10 @@ class LongPressAnimationButton extends StatefulWidget {
   final BoxBorder? border;
 
   const LongPressAnimationButton({
-    required this.text,
-    this.textStyle,
+    required this.child,
 
     required this.onLongPress,
+    this.onLongPressCancel,
     this.onTap,
 
     this.backgroundColor = Colors.blue,
@@ -77,11 +77,16 @@ class _LongPressAnimationButtonState extends State<LongPressAnimationButton> {
     }
 
     if (_isPressActive) {
+      _isPressActive=false;
       widget.onLongPress();
     }
   }
 
   void _onPressRelease() {
+    if (_fractionalSize > .2 && _isPressActive) {
+      widget.onLongPressCancel?.call();
+    }
+
     setState(() {
       _fractionalSize = 0;
       _isPressActive = false;
@@ -92,9 +97,7 @@ class _LongPressAnimationButtonState extends State<LongPressAnimationButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onTap != null ? _onTap : null,
-
       onLongPressDown: (_) => _onPress(),
-
       onLongPressEnd: (_) => _onPressRelease(),
       onLongPressCancel: () => _onPressRelease(),
 
@@ -131,14 +134,7 @@ class _LongPressAnimationButtonState extends State<LongPressAnimationButton> {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.center,
-              child: Text(
-                widget.text,
-                style:
-                    widget.textStyle ?? TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
+            Align(alignment: Alignment.center, child: widget.child),
           ],
         ),
       ),

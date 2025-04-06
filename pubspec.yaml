@@ -1,7 +1,9 @@
 name: long_press_animation_button
-description: "A new Flutter package project."
+description: "A Flutter package that implement loading buttons activated by long-press gestures with animation"
 version: 0.0.1
-homepage:
+
+homepage: https://mithun1st.blogspot.com/
+repository: https://github.com/mithun1st/long-press-animation-button
 
 environment:
   sdk: ^3.7.2

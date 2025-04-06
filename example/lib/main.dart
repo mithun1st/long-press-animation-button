@@ -29,35 +29,57 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String _text = 'ready for checkout';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 12,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            LongPressAnimationButton(
-              text: 'Long Press 1',
-              onLongPress: () => print('Click !!!'),
+            Text(
+              _text,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
 
+            // LongPressAnimationButton(
+            //   onLongPress: () => print('Click !'),
+            //   child: Text("Animation Button"),
+            // ),
+
             LongPressAnimationButton(
-              text: 'Long Press 2',
-              onTap: () => print('Tap'),
-              onLongPress: () => print('Click !!!'),
+              onTap:
+                  () => setState(() {
+                    _text = 'Long Press To Checkout.\n-- onTap() --';
+                  }),
+              onLongPressCancel:
+                  () => setState(() {
+                    _text = 'Checkout Cancel !\n-- onLongPressCancel() --';
+                  }),
+              onLongPress:
+                  () => setState(() {
+                    _text = 'CHECKOUT SUCCESS :)\n-- onLongPress() --';
+                  }),
+
+              height: 80,
+              width: 200,
               backgroundColor: Colors.tealAccent,
               loadingColor: Colors.yellow,
               borderRadius: 12,
               border: Border.all(width: 4, color: Colors.orange),
+              durationAsSecond: 4,
 
-              height: 80,
-              width: 200,
-              textStyle: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.brown,
+              child: Text(
+                'Checkout',
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.brown,
+                ),
               ),
             ),
           ],
